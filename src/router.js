@@ -1,23 +1,27 @@
 import { createWebHistory, createRouter } from "vue-router";
-import App from "./App"
-import HelloWorld from "./components/HelloWorld.vue";
-import BookDetail from "./components/BookDetail"
+// import App from "./App"
+import BookList from "./components/BookList"
+import BookDetail from "./components/BookList/BookDetail"
+
 
 const routes = [
+    // {
+    //     path: "/",
+    //     name: "Home",
+    //     component: App,
+    // },
     {
-        path: "/",
-        name: "Home",
-        component: App,
-    },
-    {
-        path: "/about",
-        name: "About",
-        component: HelloWorld,
-    },
-    {
-        path: "/books/:bookId",
-        name: "BookDetail",
-        component: BookDetail,
+        path: "/books",
+        name: "BookList",
+        component: BookList,
+        children: [
+            {
+                path: "/books/:bookId",
+                name: "BookDetail",
+                component: BookDetail,
+            },
+
+        ],
     }
 ];
 
