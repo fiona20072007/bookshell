@@ -1,15 +1,12 @@
 <template>
   <div>
-    <ul>
-
-      <router-link :to="{ name: 'BookDetail', params: { bookId: book.id }}" v-for="book in bookList" :key="book.id">
-        <div>
-          <img :src="book.image" :alt="book.name" />
-        </div>
-        {{ book.name }}
-      </router-link>
-      <router-view />
-    </ul>
+    <router-link :to="{ name: 'BookDetail', params: { bookId: book.id }}" v-for="book in bookList" :key="book.id">
+      <div>
+        <img :src="book.image" :alt="book.name"/>
+      </div>
+      <div>{{ book.name }}</div>
+    </router-link>
+    <router-view/>
   </div>
 </template>
 
@@ -18,19 +15,15 @@
 import axios from "axios"
 
 export default {
-  // name: 'BookList',
   data() {
     return {
       bookList: ''
     }
   },
 
-  mounted () {
+  mounted() {
     axios.get('https://fe-interview-api.unnotech.com/books')
         .then(response => (this.bookList = response.data))
-        .then(() => {
-          console.log('booklist',this.bookList)
-        })
         .catch(function (error) {
           console.log(error)
         })
@@ -44,14 +37,17 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
