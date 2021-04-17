@@ -18,7 +18,7 @@
 
 <script>
 import BookModify from "../BookList/BookModify"
-import axios from "axios"
+import { getData } from "../../util"
 
 export default {
   data() {
@@ -41,7 +41,7 @@ export default {
     fetchData() {
       const fetchedId = this.$route.params.bookId
       if (this.$route.params.bookId !== fetchedId || this.$route.params.bookId === undefined) return
-      axios.get('https://fe-interview-api.unnotech.com/profile/' + fetchedId)
+      getData('https://fe-interview-api.unnotech.com/profile/' + fetchedId)
           .then(response => {
             this.bookDetail = response.data;
             this.bookPrice = parseInt(this.bookDetail.price,10);

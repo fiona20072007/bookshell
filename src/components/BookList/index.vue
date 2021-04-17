@@ -11,8 +11,7 @@
 </template>
 
 <script>
-
-import axios from "axios"
+import { getData } from "../../util"
 
 export default {
   data() {
@@ -20,15 +19,12 @@ export default {
       bookList: ''
     }
   },
-
   mounted() {
-    axios.get('https://fe-interview-api.unnotech.com/books')
-        .then(response => (this.bookList = response.data))
+    getData("https://fe-interview-api.unnotech.com/books").then(response => (this.bookList = response.data))
         .catch(function (error) {
           console.log(error)
-        })
+        });
   }
-
 }
 </script>
 

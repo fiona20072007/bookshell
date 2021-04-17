@@ -6,7 +6,7 @@
 
 <script>
 
-import axios from "axios"
+import { patchData } from "../../util"
 
 export default {
   props: ["bookNewPrice", "bookNewCount"],
@@ -21,7 +21,7 @@ export default {
       this.bookNewPrice ? patchObj["price"] = this.bookNewPrice : null;
       this.bookNewCount ? patchObj["count"] = this.bookNewCount : null;
 
-      axios.patch('https://fe-interview-api.unnotech.com/profile/' + patchId, patchObj)
+      patchData('https://fe-interview-api.unnotech.com/profile/' + patchId, patchObj)
           .then(response => {
             console.log(response)
           })
