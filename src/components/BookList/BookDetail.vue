@@ -19,6 +19,7 @@
 <script>
 import BookModify from "../BookList/BookModify"
 import { getData } from "../../util"
+import {getBookProfileUrl} from "../../constants"
 
 export default {
   data() {
@@ -41,7 +42,7 @@ export default {
     fetchData() {
       const fetchedId = this.$route.params.bookId
       if (this.$route.params.bookId !== fetchedId || this.$route.params.bookId === undefined) return
-      getData('https://fe-interview-api.unnotech.com/profile/' + fetchedId)
+      getData(getBookProfileUrl + fetchedId)
           .then(response => {
             this.bookDetail = response.data;
             this.bookPrice = parseInt(this.bookDetail.price,10);

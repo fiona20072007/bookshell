@@ -12,6 +12,7 @@
 
 <script>
 import { getData } from "../../util"
+import {getBooksDetailUrl} from "../../constants"
 
 export default {
   data() {
@@ -20,7 +21,7 @@ export default {
     }
   },
   mounted() {
-    getData("https://fe-interview-api.unnotech.com/books").then(response => (this.bookList = response.data))
+    getData(getBooksDetailUrl).then(response => (this.bookList = response.data))
         .catch(function (error) {
           console.log(error)
         });
