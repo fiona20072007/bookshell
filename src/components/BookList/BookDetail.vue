@@ -12,46 +12,51 @@
       <input v-model="bookCount">
       <button @click="plusNumber('bookCount', bookCount)">+</button>
     </div>
+    <BookModify :bookNewPrice="bookPrice !== parseInt(bookDetail.price,10) ? bookPrice : null" :bookNewCount="bookCount !== parseInt(bookDetail.count,10) ? bookCount : null"/>
   </div>
 </template>
 
 <script>
+import BookModify from "../BookList/BookModify"
 import axios from "axios"
 
 export default {
-  // name: 'BookList',
   data() {
     return {
       bookDetail: '',
+      bookPrice: null,
       bookCount: null,
-      bookPrice: null
     }
+  },
+  components: {
+    BookModify
   },
   created() {
     this.fetchData()
   },
   watch: {
-    // call again the method if the route changes
     '$route': 'fetchData',
   },
   methods: {
     fetchData() {
-      const fetchedId = this.$route.params.id
-      if (this.$route.params.id !== fetchedId) return
-      axios.get('https://fe-interview-api.unnotech.com/profile/' + this.$route.params.bookId)
+      const fetchedId = this.$route.params.bookId
+      if (this.$route.params.bookId !== fetchedId || this.$route.params.bookId === undefined) return
+      axios.get('https://fe-interview-api.unnotech.com/profile/' + fetchedId)
           .then(response => {
             this.bookDetail = response.data;
-            this.bookPrice = this.bookDetail.price;
-            this.bookCount = this.bookDetail.count;
+            this.bookPrice = parseInt(this.bookDetail.price,10);
+            this.bookCount = parseInt(this.bookDetail.count,10);
           })
           .catch(function (error) {
             console.log(error)
           })
     },
-    plusNumber(type, num) {
+    plusNumber(type, bookNum) {
+      const num = parseInt(bookNum,10)
       return type === 'bookPrice' ? this.bookPrice = num+1 : this.bookCount = num+1
     },
-    minusNumber(type, num) {
+    minusNumber(type, bookNum) {
+      const num = parseInt(bookNum,10)
       return num >0 ? type === 'bookPrice' ? this.bookPrice = num-1 : this.bookCount = num-1 : null
     }
   }
