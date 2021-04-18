@@ -6,17 +6,17 @@ import BookIndex from "./components/BookIndex"
 
 const routes = [
     {
-        path: "/",
+        path: "./",
         name: "BookIndex",
         component: BookIndex,
     },
     {
-        path: "/books",
+        path: "./books",
         name: "BookList",
         component: BookList,
         children: [
             {
-                path: "/books/:bookId",
+                path: "./books/:bookId",
                 name: "BookDetail",
                 component: BookDetail,
             },
