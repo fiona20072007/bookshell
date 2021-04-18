@@ -98,6 +98,9 @@ $corner-radius: 5px;
 .errorAlert {
   @include alertModel(#CE0000)
 }
+.noModifyAlert {
+  @include alertModel(gray)
+}
 
 @keyframes slide-in-top {
   0% {
