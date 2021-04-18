@@ -1,15 +1,17 @@
 <template>
-  <div>
-    <router-link :to="{ name: 'BookDetail', params: { bookId: book.id }}" v-for="book in bookList" :key="book.id">
-      <div :class="{ activeBook: bookId === book.id }">
-        <div>
-          <img :src="book.image" :alt="book.name"/>
+  <div class="bookListBorder">
+    <div class="bookList">
+      <router-link :to="{ name: 'BookDetail', params: { bookId: book.id }}" v-for="book in bookList" :key="book.id">
+        <div :class="{ activeBook: bookId === book.id, book }">
+          <div class="bookImg">
+            <img :src="book.image" :alt="book.name"/>
+          </div>
+          <div class="bookDes">{{ book.name }}</div>
         </div>
-        <div>{{ book.name }}{{book.id}}</div>
-      </div>
-    </router-link>
-    <router-view/>
+      </router-link>
+    </div>
   </div>
+  <router-view/>
 </template>
 
 <script>
