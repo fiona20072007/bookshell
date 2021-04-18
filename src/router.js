@@ -1,9 +1,15 @@
 import { createWebHistory, createRouter } from "vue-router";
 import BookList from "./components/BookList"
 import BookDetail from "./components/BookList/BookDetail"
+import BookIndex from "./components/BookIndex"
 
 
 const routes = [
+    {
+        path: "/",
+        name: "BookIndex",
+        component: BookIndex,
+    },
     {
         path: "/books",
         name: "BookList",

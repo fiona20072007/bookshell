@@ -1,24 +1,27 @@
 <template>
-  <div>
-    <div>
-      <span>價格</span>
-      <button @click="minusNumber('bookPrice', bookPrice)">-</button>
-      <input v-model="bookPrice">
-      <button @click="plusNumber('bookPrice', bookPrice)">+</button>
+  <div class="detailBlockAll">
+    <div class="detailBlock">
+      <div class="detail">
+        <span>價格</span>
+        <button @click="minusNumber('bookPrice', bookPrice)">-</button>
+        <input v-model="bookPrice">
+        <button @click="plusNumber('bookPrice', bookPrice)">+</button>
+      </div>
+      <div class="detail">
+        <span>數量</span>
+        <button @click="minusNumber('bookCount', bookCount)">-</button>
+        <input v-model="bookCount">
+        <button @click="plusNumber('bookCount', bookCount)">+</button>
+      </div>
     </div>
-    <div>
-      <span>數量</span>
-      <button @click="minusNumber('bookCount', bookCount)">-</button>
-      <input v-model="bookCount">
-      <button @click="plusNumber('bookCount', bookCount)">+</button>
-    </div>
-    <BookModify :bookNewPrice="bookPrice !== parseInt(bookDetail.price,10) ? bookPrice : null" :bookNewCount="bookCount !== parseInt(bookDetail.count,10) ? bookCount : null"/>
+    <BookModify :bookNewPrice="bookPrice !== parseInt(bookDetail.price,10) ? bookPrice : null"
+                :bookNewCount="bookCount !== parseInt(bookDetail.count,10) ? bookCount : null" class="bookModify"/>
   </div>
 </template>
 
 <script>
 import BookModify from "../BookList/BookModify"
-import { getData } from "../../util"
+import {getData} from "../../util"
 import {getBookProfileUrl} from "../../constants"
 
 export default {
@@ -45,21 +48,25 @@ export default {
       getData(getBookProfileUrl + fetchedId)
           .then(response => {
             this.bookDetail = response.data;
-            this.bookPrice = parseInt(this.bookDetail.price,10);
-            this.bookCount = parseInt(this.bookDetail.count,10);
+            this.bookPrice = parseInt(this.bookDetail.price, 10);
+            this.bookCount = parseInt(this.bookDetail.count, 10);
           })
           .catch(function (error) {
             console.log(error)
           })
     },
     plusNumber(type, bookNum) {
-      const num = parseInt(bookNum,10)
-      return type === 'bookPrice' ? this.bookPrice = num+1 : this.bookCount = num+1
+      const num = parseInt(bookNum, 10)
+      return type === 'bookPrice' ? this.bookPrice = num + 1 : this.bookCount = num + 1
     },
     minusNumber(type, bookNum) {
-      const num = parseInt(bookNum,10)
-      return num >0 ? type === 'bookPrice' ? this.bookPrice = num-1 : this.bookCount = num-1 : null
+      const num = parseInt(bookNum, 10)
+      return num > 0 ? type === 'bookPrice' ? this.bookPrice = num - 1 : this.bookCount = num - 1 : null
     }
   }
 }
 </script>
+
+<style scoped lang="scss">
+@import "../.././assets/scss/bookdetail";
+</style>

@@ -2,7 +2,7 @@
   <div class="bookListBorder">
     <div class="bookList">
       <router-link :to="{ name: 'BookDetail', params: { bookId: book.id }}" v-for="book in bookList" :key="book.id">
-        <div :class="{ activeBook: bookId === book.id, book }">
+        <div :class="{ activeBook: bookId === book.id, book }" @click="scrollToView(book.id)" :id="book.id">
           <div class="bookImg">
             <img :src="book.image" :alt="book.name"/>
           </div>
@@ -26,7 +26,7 @@ export default {
     }
   },
   created() {
-    this.getBookId()
+    this.getBookId();
   },
   watch: {
     '$route': 'getBookId'
@@ -40,6 +40,9 @@ export default {
   methods: {
     getBookId() {
       return this.bookId = parseInt(this.$route.params.bookId)
+    },
+    scrollToView(n) {
+      document.getElementById(n).scrollIntoView({behavior: "smooth", inline: "center"})
     }
   }
 }
