@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <router-link to="/books">Welcome To Bookshelf</router-link>
+    <router-link to="/bookshell/books">Welcome To Bookshelf</router-link>
   </div>
   <router-view />
 </template>
