@@ -1,8 +1,27 @@
+@mixin pad{
+  @media(max-width:768px){
+    @content;
+  }
+}
+@mixin mobile{
+  @media(max-width:375px){
+    @content;
+  }
+}
+
 .indexTitle {
   margin: 30vh;
   font-weight: bold;
   font-size: 40px;
   animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  @include pad{
+    margin: 25vh 5vh 0 5vh;
+    font-size: 30px;
+  }
+  @include mobile{
+    margin: 30vh 2vh 0 2vh;
+    font-size: 30px;
+  }
 }
 
 @keyframes text-focus-in {

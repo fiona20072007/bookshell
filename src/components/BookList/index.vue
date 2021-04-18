@@ -42,6 +42,7 @@ export default {
       return this.bookId = parseInt(this.$route.params.bookId)
     },
     scrollToView(n) {
+      if(window.screen.availWidth < 768) {return}
       document.getElementById(n).scrollIntoView({behavior: "smooth", inline: "center"})
     }
   }

@@ -1,3 +1,14 @@
+@mixin pad{
+  @media(max-width:768px){
+    @content;
+  }
+}
+@mixin mobile{
+  @media(max-width:375px){
+    @content;
+  }
+}
+
 .bookListBorder {
   width: 90vw;
   height: 350px;
@@ -6,17 +17,49 @@
   margin-bottom: 40px;
   display: flex;
   justify-content: center;
+  @include pad() {
+    height: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  @include mobile{
+    width: auto;
+    margin-top: 15px;
+  }
 }
 .bookList {
   display: flex;
   align-items: center;
   overflow-x: scroll;
   width: 88vw;
+  @include pad() {
+    flex-flow: wrap;
+    overflow-y: scroll;
+    height: 62vh;
+    justify-content: space-around;
+  }
+  @include mobile{
+    flex-flow: nowrap;
+    width: auto;
+    flex-direction: column;
+    height: 65vh;
+    justify-content: flex-start;
+  }
 }
 .book {
   width: 285px;
   height: 275px;
   margin: 10px;
+  @include pad() {
+    width: 155px;
+    height: 295px;
+  }
+  @include mobile{
+    width: 285px;
+    height: 275px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
 }
 .bookImg {
   height: 200px;

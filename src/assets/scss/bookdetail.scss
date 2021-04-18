@@ -1,9 +1,20 @@
+@mixin pad{
+  @media(max-width:768px){
+    @content;
+  }
+}
+@mixin mobile{
+  @media(max-width:375px){
+    @content;
+  }
+}
+
 .detailBlockAll {
   width: 90vw;
   height: 20vh;
   display: flex;
   justify-content: space-between;
-  
+
 }
 .detailBlock {
   display: flex;
@@ -16,6 +27,12 @@
   color: gray;
   span {
     padding-right: 20px;
+    @include pad{
+      padding-right: 8px;
+    }
+    @include mobile{
+      padding-right: 5px;
+    }
   }
   button {
     font-size: 16px;
@@ -27,6 +44,12 @@
     cursor: pointer;
     border: 1px solid gray;
     transition: 0.25s ease;
+    @include pad{
+      margin-right: 6px;
+    }
+    @include mobile{
+      margin-right: 5px;
+    }
     &:hover {
       color: white;
       background: gray;
@@ -40,5 +63,14 @@
     background: transparent;
     border: none;
     border-bottom: 1px solid gray;
+    text-align: center;
+    @include pad{
+      width: 65px;
+      margin-right: 6px;
+    }
+    @include mobile{
+      width: 60px;
+      margin-right: 5px;
+    }
   }
 }
