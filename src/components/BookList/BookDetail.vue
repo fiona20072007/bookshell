@@ -4,13 +4,13 @@
       <div class="detail">
         <span>價格</span>
         <button @click="minusNumber('bookPrice', bookPrice)">-</button>
-        <input v-model="bookPrice">
+        <input v-model="bookPrice" :change="check_num('bookPrice')">
         <button @click="plusNumber('bookPrice', bookPrice)">+</button>
       </div>
       <div class="detail">
         <span>數量</span>
         <button @click="minusNumber('bookCount', bookCount)">-</button>
-        <input v-model="bookCount">
+        <input v-model="bookCount" :change="check_num('bookCount')">
         <button @click="plusNumber('bookCount', bookCount)">+</button>
       </div>
     </div>
@@ -62,6 +62,18 @@ export default {
     minusNumber(type, bookNum) {
       const num = parseInt(bookNum, 10)
       return num > 0 ? type === 'bookPrice' ? this.bookPrice = num - 1 : this.bookCount = num - 1 : null
+    },
+    check_num(type) {
+      const num = type === 'bookPrice' ? this.bookPrice : this.bookCount;
+      if (num === null) {
+        return
+      }
+      let checkNum = num.toString();
+      checkNum = checkNum.replace(/[^\d]/g, '');
+      if (checkNum.indexOf('.') < 1 && checkNum !== '') {
+        checkNum = parseInt(checkNum);
+      }
+      type === 'bookPrice' ? this.bookPrice = checkNum : this.bookCount = checkNum;
     }
   }
 }
