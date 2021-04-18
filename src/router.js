@@ -6,6 +6,11 @@ import BookIndex from "./components/BookIndex"
 
 const routes = [
     {
+        path: "/",
+        name: "BookIndex",
+        component: BookIndex,
+    },
+    {
         path: "/bookshell/",
         name: "BookIndex",
         component: BookIndex,
