@@ -11,6 +11,11 @@ const routes = [
         component: BookIndex,
     },
     {
+        path: "/bookshell/",
+        name: "BookIndex",
+        component: BookIndex,
+    },
+    {
         path: "/books",
         name: "BookList",
         component: BookList,
