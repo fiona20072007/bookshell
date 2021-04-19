@@ -1,24 +1,22 @@
-# bookshell
+# bookshelf
 
-## Project setup
-```
-npm install
-```
+## Demo
+Link: https://fiona20072007.github.io/bookshell/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+由於只使用 Github Pages，並沒有使用 firebase 或其他的網站部署，因此頁面無法支援重新整理。
 
-### Compiles and minifies for production
-```
-npm run build
-```
+原因：GitHub Pages 是完全靜態的 Server，網址對應到了真實的檔案路徑，當存取根目錄 / 時，預設的設定會去找 /index.html，當在 /[repo-name]/books 頁面重新整理時，dist資料夾內並沒有 /[repo-name]/books/index.html，所以會顯示 404 not found。
 
-### Lints and fixes files
-```
-npm run lint
-```
+如要 clone 在本地測試，請使用 master branch 測試，謝謝
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## User Flow
+
+![bookshelf UI image](./src/assets/bookshelfUI.png)
+
+到首頁後，點擊標題欄位進入到 BookList 頁面，可以左右滑動瀏覽所有書籍(小螢幕時可上下滑動)，點擊書本後底下會顯示價格與數量，左右按鍵可加減數目 1，或直接修改數字(不支援負數)，確認修改後會出現提示顯示是否修改成功。
+
+整個專案沒有使用第三方 library，主要使用 Vue3 搭配 scss。
+
+### 遇到的困難、問題，以及解決的方法
+
+在部署到 Github Page 出現 url 顯示錯誤，或是重新整理失敗的問題，原因在此文件上方有解釋，解決方式主要會使用 firebase 部署，並修改 host 設定對應到的頁面。
