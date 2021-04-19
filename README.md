@@ -7,7 +7,14 @@ Link: https://fiona20072007.github.io/bookshell/
 
 原因：GitHub Pages 是完全靜態的 Server，網址對應到了真實的檔案路徑，當存取根目錄 / 時，預設的設定會去找 /index.html，當在 /[repo-name]/books 頁面重新整理時，dist資料夾內並沒有 /[repo-name]/books/index.html，所以會顯示 404 not found。
 
-如要 clone 在本地測試，請使用 master branch 測試，謝謝
+如要 clone 在本地測試，請使用 master branch 測試
+
+步驟：
+
+1. git clone 加上 repo 的 url
+2. cd 到該資料夾並 npm install (中間會有疑似停住的狀況，需耐心等待跑完就好)
+3. npm run serve
+4. 到 http://localhost:8080/bookshell/
 
 ## User Flow
 
